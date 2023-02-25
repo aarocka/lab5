@@ -1,11 +1,11 @@
 "use strict";
 // This function creates a slideshow object
 // It takes two parameters: an array of objects,
-// each having an 'fileName' and a 'caption' property
+// each having an 'pic' and a 'caption' property
 // and a string that specifies the style to be used
 
 function MakeSlideShow (objList, style) {
-    if (!objList[0].fileName || !objList[0].caption) {
+    if (!objList[0].pic || !objList[0].caption) {
         throw ("MakeSlideShow expects an array of objects, each having an 'image' and a 'caption' property");
     } 
 
@@ -48,7 +48,7 @@ function MakeSlideShow (objList, style) {
     setPic();
 
     function setPic() {
-        myImage.src = objList[picNum].fileName;
+        myImage.src = objList[picNum].pic;
         caption.innerHTML = objList[picNum].caption;
     }
 
