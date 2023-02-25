@@ -47,12 +47,12 @@
             "use strict";
 
             var myPicList = [
-                {filename:"http://cis-linux2.temple.edu/~sallyk/pics_cat/pic1.png", caption:"test blahaj0"},
-                {filename:"http://cis-linux2.temple.edu/~sallyk/pics_cat/pic2.png", caption:"test blahaj1"},
-                {filename:"http://cis-linux2.temple.edu/~sallyk/pics_cat/pic3.png", caption:"test blahaj2"},
-                {filename:"http://cis-linux2.temple.edu/~sallyk/pics_cat/pic4.png", caption:"test blahaj3"},
-                {filename:"http://cis-linux2.temple.edu/~sallyk/pics_cat/pic5.png", caption:"test blahaj4"},
-                {filename:"http://cis-linux2.temple.edu/~sallyk/pics_cat/pic6.png", caption:"test blahaj5"}
+                {fileName:"http://cis-linux2.temple.edu/~sallyk/pics_cat/pic1.png", caption:"test blahaj0"},
+                {fileName:"http://cis-linux2.temple.edu/~sallyk/pics_cat/pic2.png", caption:"test blahaj1"},
+                {fileName:"http://cis-linux2.temple.edu/~sallyk/pics_cat/pic3.png", caption:"test blahaj2"},
+                {fileName:"http://cis-linux2.temple.edu/~sallyk/pics_cat/pic4.png", caption:"test blahaj3"},
+                {fileName:"http://cis-linux2.temple.edu/~sallyk/pics_cat/pic5.png", caption:"test blahaj4"},
+                {fileName:"http://cis-linux2.temple.edu/~sallyk/pics_cat/pic6.png", caption:"test blahaj5"}
             ];
 
             var ss1 = MakeSlideShow(myPicList, "slideShow");
@@ -64,11 +64,11 @@
 
             // create second slideshow object
             var otherPicList =[ 
-                {filename:"http://cis-linux2.temple.edu/~sallyk/pics_cat/pic10.png", caption:"test blahaj"},
-                {filename:"http://cis-linux2.temple.edu/~sallyk/pics_cat/pic11.png", caption:"test blahaj"},
-                {filename:"http://cis-linux2.temple.edu/~sallyk/pics_cat/pic13.png", caption:"test blahaj"},
-                {filename:"http://cis-linux2.temple.edu/~sallyk/pics_cat/pic14.png", caption:"test blahaj"},
-                {filename:"http://cis-linux2.temple.edu/~sallyk/pics_cat/pic15.png", caption:"test blahaj"}
+                {fileName:"http://cis-linux2.temple.edu/~sallyk/pics_cat/pic10.png", caption:"test blahaj"},
+                {fileName:"http://cis-linux2.temple.edu/~sallyk/pics_cat/pic11.png", caption:"test blahaj"},
+                {fileName:"http://cis-linux2.temple.edu/~sallyk/pics_cat/pic13.png", caption:"test blahaj"},
+                {fileName:"http://cis-linux2.temple.edu/~sallyk/pics_cat/pic14.png", caption:"test blahaj"},
+                {fileName:"http://cis-linux2.temple.edu/~sallyk/pics_cat/pic15.png", caption:"test blahaj"}
             ];
             var ss2 = MakeSlideShow(otherPicList, "slideShow");
             document.getElementById("content").appendChild(ss2);

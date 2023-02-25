@@ -16,6 +16,14 @@ function MakeSlideShow (picList, style) {
     var buttonDiv = document.createElement("div");
     slideShow.appendChild(buttonDiv);
 
+    //add caption under the image
+    var caption =document.createElement("span");
+    caption.classList.add("captionStyle");
+    caption.id="caption";
+    div.appendChild(caption);
+
+    // add some br tags to make the buttons appear on separate lines
+
     // add back button under the image (and empty paragraph)
     var backButton = document.createElement("button");
     backButton.innerHTML = " &lt; ";
@@ -31,7 +39,7 @@ function MakeSlideShow (picList, style) {
     setPic();
 
     function setPic() {
-        myImage.src = picList[picNum];
+        myImage.src = picList[picNum].fileName;
     }
 
     // Advance to next image in the picture list
