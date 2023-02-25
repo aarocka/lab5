@@ -1,6 +1,9 @@
 "use strict";
 
-function MakeSlideShow (picList, style) {
+function MakeSlideShow (objList, style) {
+    if (!objList[0].fileName || !objList[0].caption) {
+        throw ("MakeSlideShow expects an array of objects, each having an 'image' and a 'caption' property");
+    } 
 
     var slideShow = document.createElement("div");
     slideShow.classList.add(style);
@@ -41,14 +44,14 @@ function MakeSlideShow (picList, style) {
     setPic();
 
     function setPic() {
-        myImage.src = picList[picNum].fileName;
-        caption.innerHTML = picList[picNum].caption;
+        myImage.src = objList[picNum].fileName;
+        caption.innerHTML = objList[picNum].caption;
     }
 
     // Advance to next image in the picture list
     function nextPic() {
 
-        if (picNum < picList.length-1) {
+        if (picNum < objList.length-1) {
             picNum++;
         }
         setPic();
@@ -68,7 +71,7 @@ function MakeSlideShow (picList, style) {
     fwdButton.onclick = nextPic;
 
     slideShow.setPicNum = function (newNum) {
-        if ((newNum >= 0) && (newNum < picList.length)) {
+        if ((newNum >= 0) && (newNum < objList.length)) {
             picNum = newNum;
             // change the src attribute of the image element to the desired new image)				
             setPic();
