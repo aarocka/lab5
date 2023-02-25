@@ -42,10 +42,13 @@
         </div>
 
         <script src="MakeSlideShow.js"></script>
+        <script src="ajax.js"></script>
+
         <script>
 
             "use strict";
-
+            //create first slideshow object
+            /*
             var myPicList = [
                 {fileName:"http://cis-linux2.temple.edu/~sallyk/pics_cat/pic1.png", caption:"test blahaj0"},
                 {fileName:"http://cis-linux2.temple.edu/~sallyk/pics_cat/pic2.png", caption:"test blahaj1"},
@@ -54,6 +57,10 @@
                 {fileName:"http://cis-linux2.temple.edu/~sallyk/pics_cat/pic5.png", caption:"test blahaj4"},
                 {fileName:"http://cis-linux2.temple.edu/~sallyk/pics_cat/pic6.png", caption:"test blahaj5"}
             ];
+            */
+
+            //image list from ajax call
+            
 
             var ss1 = MakeSlideShow(myPicList, "slideShow");
             document.getElementById("content").appendChild(ss1);
@@ -63,6 +70,7 @@
             ss1.setPicNum(3); // sets array index to 3, if 3 is in bounds for the array.
 
             // create second slideshow object
+            /*
             var otherPicList =[ 
                 {fileName:"http://cis-linux2.temple.edu/~sallyk/pics_cat/pic10.png", caption:"test blahaj6"},
                 {fileName:"http://cis-linux2.temple.edu/~sallyk/pics_cat/pic11.png", caption:"test blahaj7"},
@@ -70,10 +78,11 @@
                 {fileName:"http://cis-linux2.temple.edu/~sallyk/pics_cat/pic14.png", caption:"test blahaj9"},
                 {fileName:"http://cis-linux2.temple.edu/~sallyk/pics_cat/pic15.png", caption:"test blahaj10"}
             ];
+            */
             var ss2 = MakeSlideShow(otherPicList, "slideShow");
             document.getElementById("content").appendChild(ss2);
 
-            
+
         </script>
     </body>
 </html>
