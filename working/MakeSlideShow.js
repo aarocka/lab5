@@ -1,4 +1,8 @@
 "use strict";
+// This function creates a slideshow object
+// It takes two parameters: an array of objects,
+// each having an 'fileName' and a 'caption' property
+// and a string that specifies the style to be used
 
 function MakeSlideShow (objList, style) {
     if (!objList[0].fileName || !objList[0].caption) {
