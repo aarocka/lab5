@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Javascript Cat Show</title>
+
+        <style>
+            body {
+                background-color:#505770;
+            }
+            .slideShow{
+                text-align:center;
+            }
+            .slideShow button {
+                width: 3rem;
+                box-shadow: 0.1rem 0.1rem 0.1rem  #222222;
+                border-radius:0.25rem;
+
+            }
+            .slideShow img { /* style images that are inside of class slideShow */
+                width: 25%;
+                box-shadow: 0.25rem 0.25rem 0.25rem  #222222;
+                border-radius:0.5rem;
+                margin-bottom: 0.5rem;
+            }
+        </style>
+
+    </head>
+    <body>
+        <br/>
+        <p class="slideShow">
+            <img id="pic" src="" alt="cute cat pic"/>
+            <br/>
+            <button onclick ="prevPic()">&lt;</button>
+            &nbsp; 
+            <button onclick ="nextPic()">&gt;</button>
+        </p>
+        <script>
+            
+            "use strict";
+
+            var picList = ["http://cis-linux2.temple.edu/~sallyk/pics_cat/pic1.png",
+                "http://cis-linux2.temple.edu/~sallyk/pics_cat/pic2.png",
+                "http://cis-linux2.temple.edu/~sallyk/pics_cat/pic3.png",
+                "http://cis-linux2.temple.edu/~sallyk/pics_cat/pic4.png",
+                "http://cis-linux2.temple.edu/~sallyk/pics_cat/pic5.png",
+                "http://cis-linux2.temple.edu/~sallyk/pics_cat/pic6.png"];
+
+            // Global variable that keeps track of which images is showing
+            var picNum = 0;
+            setPic();
+
+            function setPic() {
+                // change the src attribute of the image element on the page to show a picture				
+                document.getElementById('pic').src = picList[picNum];
+            }
+
+            function nextPic() {
+                // last picture is in position [length-1]
+                if (picNum < picList.length - 1) {
+                    picNum++;
+                }
+                setPic();
+            }
+
+            function prevPic() {
+                // first picture is in position [0]
+                if (picNum > 0) {
+                    picNum--;
+                }
+                setPic();
+            }
+
+        </script>
+    </body>
+</html>

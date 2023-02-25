@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Building a simple router</title>
+        <link href="style/slideShow.css" rel="stylesheet" type="text/css" />  
+    <style>
+        body {
+            background-color: #BBCCCC;
+        }
+    </style>
+    </head>
+    <body>
+
+        <a onclick="inject(home())">Home</a> |
+        <a onclick="inject(slideShowContent())">Slide Shows</a> |
+        <a onclick="inject(blog())">Blog</a> |
+
+        <br/>
+        <br/>
+
+        <!-- Note: the JavaScript code expects there to be a DOM object with id "view" -->
+        <!-- This is where the content is placed. -->
+        <div id="content">  </div>
+
+        <!-- Whenever you create a new js file, remember to add a script tag to it. --> 
+        <!-- Or else your page will not know about any code that is stored in that file. --> 
+        <script src="js/reusable/MakeSlideShow.js"></script>
+
+        <script src="js/content/blog.js"></script>
+        <script src="js/content/home.js"></script>
+        <script src="js/content/slideShowContent.js"></script>
+
+        <script>
+
+            "use strict";
+
+            function inject(ele) {
+                // blank out old content
+                document.getElementById("content").innerHTML = "";
+
+                // append new content
+                document.getElementById("content").appendChild(ele);
+            }
+
+            inject(home()); // first rendering of page should inject home content...
+
+        </script>
+    </body>
+</html>

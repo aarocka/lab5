@@ -1,0 +1,31 @@
+/* 
+
+This is an example of an external style sheet that's been created just for 
+the reusable component that's returned by the JavaScript MakeSlideShow function.
+
+It "claims" only one global CSS class name ("slideShow") -- all other 
+CSS selectors have been "localized" so that they apply only within 
+class "slideShow".
+
+*/
+
+
+.slideShow {
+    text-align:center;
+    font-weight:bold; 
+}
+
+.slideShow img { /* style images that are inside of class slideShow */
+    width: 80%;
+    box-shadow: 0.25rem 0.25rem 0.25rem  #444444;
+    border-radius:0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.slideShow button { /* style buttons that are inside of class slideShow */
+    width: 25%;
+    margin-right: 10%;
+    margin-left: 10%;
+    box-shadow: 0.1rem 0.1rem 0.1rem  #444444;
+    border-radius:0.25rem;
+}

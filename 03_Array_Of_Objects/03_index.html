@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Javascript Cat Show</title>
+
+        <style>
+            body {
+                background-color:#505770;
+            }
+            .slideShow{
+                text-align:center;
+            }
+            .slideShow .captionStyle {
+                font-weight:bold;
+                color:white;
+            }
+            .slideShow button {
+                width: 3rem;
+                box-shadow: 0.1rem 0.1rem 0.1rem  #444444;
+                border-radius:0.25rem;
+            }
+            .slideShow img { /* style images that are inside of class slideShow */
+                width: 25%;
+                box-shadow: 0.25rem 0.25rem 0.25rem  #222222;
+                border-radius:0.5rem;
+            }
+        </style>
+
+    </head>
+    <body>
+
+        <br/>
+
+        <p class="slideShow">
+            <img id="pic" src="" alt="cute cat pic"/>
+            <br/>
+            <span id='caption' class="captionStyle"></span>
+            <br/><br/>
+            <button onclick ="prevPic()">&lt;</button>
+            &nbsp; 
+            <button onclick ="nextPic()">&gt;</button>
+        </p>
+        <script>
+            
+            "use strict";
+
+            var picObjList = [
+                {fileName: "http://cis-linux2.temple.edu/~sallyk/pics_cat/pic1.png", caption: "Carla"},
+                {fileName: "http://cis-linux2.temple.edu/~sallyk/pics_cat/pic2.png", caption: "Lucilla"},
+                {fileName: "http://cis-linux2.temple.edu/~sallyk/pics_cat/pic3.png", caption: "The A Team"}
+            ];
+
+            // Global variable that keeps track of which images is showing
+            var picNum = 0;
+            setPic();
+
+            function setPic() {
+
+                // change the src attribute of the image element on the page (to be pic1.png, or pic2.png, etc)				
+                document.getElementById('pic').src = picObjList[picNum].fileName;
+
+                // change the caption too
+                document.getElementById('caption').innerHTML = picObjList[picNum].caption;
+
+            }
+
+            // Advance to next image in the picture list
+            function nextPic() {
+
+                if (picNum < picObjList.length - 1) {
+                    picNum++;
+                }
+                setPic();
+            }
+
+            // Go to the previous image in the picture list
+            function prevPic() {
+
+                if (picNum > 0) {
+                    picNum--;
+                }
+                setPic();
+            }
+
+        </script>
+    </body>
+</html>

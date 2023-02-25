@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Javascript Cat Show</title>
+
+        <!-- Following the CSS file naming convention, we put all the styles for the 
+             slideShow into their own style sheet. In this style sheet, 
+             every rule is prefixed by ".slidShow" (same name as css file name). 
+             This "localizes" the styling so that it only applies to DOM elements 
+             classed "slideShow".
+             
+             Basically, the Provider code is the Make function PLUS the associated 
+             style sheet. The HTML coder can modify or override the slideShow styles 
+             (as shown below). 
+        --> 
+
+        <link href="slideShow.css" rel="stylesheet" type="text/css" /> 
+
+        <style> 
+            /* The HTML coders can place their overall style elsewhere, e.g., in an internal 
+            style sheet or in their own external style sheet. They can override any styles that 
+            they may not like from the slideShow style sheet - they just redefine those styles. */
+            body {
+                background-color:#A0AAC0;
+            }
+
+
+
+
+        </style>
+
+    </head>
+    <body>
+        <h2>Because this page uses AJAX, you must RUN not VIEW the page !</h2>
+
+        <div id="content"></div>
+
+        <script src="js/ajax.js"></script>      
+        <script src="js/10_MakeSlideShow.js"></script>
+        <script>
+
+            // Create a DOM element (div) like a CGF would do. 
+            var ele = document.createElement("div");
+            
+            // style ele as a flex box and place two divs in that flex box
+            // (each 50% wide). Each of these divs will hold one slide show.
+
+            ele.innerHTML = `
+              <style>
+                .ssFlex {
+                  display:flex;
+                  flex-direction:row;
+                }
+                .ssFlex .ssHolder {
+                  width: 50%;
+                  box-sizing:border-box;
+                  text-align:center;
+                }
+              </style>
+              <div class="firstDiv ssHolder">
+                <h2>First SlideShow</h2>
+              </div>
+              <div class="secondDiv ssHolder">
+                <h2>Second SlideShow</h2>
+              </div>
+            `;
+
+            ele.classList.add("ssFlex"); // must style ele as ssFlex to pick up the 
+            // above styling.
+
+            // Get a reference to the two divs into which you want to place 
+            // slide show components. 
+            var firstDiv = ele.getElementsByClassName("firstDiv")[0];
+            var secondDiv = ele.getElementsByClassName("secondDiv")[0];
+
+            // Shows how an ajax error is handled -- you'll see an error 
+            // message on the page. waterFunnn.json is mispelled.
+            ajax("json/waterFunnn.json", processFunList, firstDiv);
+            function processFunList(funList) {
+
+                // MakeSlideShow expects a property called "image", so provide that... 
+                for (var i = 0; i < funList.length; i++) {
+                    funList[i].image = funList[i].pic;
+                    console.log("image " + i + " " + funList[i].image);
+                }
+
+                console.log("funList after setting image properties");
+                console.log(funList);
+                var ss = MakeSlideShow(funList, "slideShow");
+                firstDiv.appendChild(ss);
+
+                // Example showing why you need to get the ss reference, so the HTML page can invoke 
+                // any public methods that may be available from the returned slide show object.
+                ss.setPicNum(1);
+            }
+
+
+            ajax("json/cars.json", processCarList, secondDiv);
+            function processCarList(carList) {
+
+                // MakeSlideShow expects a property called "image", so provide that... 
+                for (var i = 0; i < carList.length; i++) {
+                    carList[i].image = carList[i].photo;
+                    console.log("image " + i + " " + carList[i].image);
+                }
+
+                var ss = MakeSlideShow(carList, "slideShow");
+                secondDiv.appendChild(ss);
+
+                // Example showing why you need to get the ss reference, so the HTML page can invoke 
+                // any public methods that may be available from the returned slide show object.
+                ss.setPicNum(2);
+            }
+
+            // add ele into the content area. 
+            // If using NavRouter, you'd just return ele at the end of the CGF 
+            // (content generating function).
+            document.getElementById("content").appendChild(ele);
+
+        </script>
+    </body>
+</html>

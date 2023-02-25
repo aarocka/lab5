@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Javascript Cat Show</title>
+
+        <!-- Following the CSS file naming convention, we put all the styles for the 
+             slideShow into their own style sheet. In this style sheet, 
+             every rule is prefixed by ".slidShow" (same name as css file name). 
+             This "localizes" the styling so that it only applies to DOM elements 
+             classed "slideShow".
+             
+             Basically, the Provider code is the Make function PLUS the associated 
+             style sheet. The HTML coder can modify or override the slideShow styles 
+             (as shown below). 
+        --> 
+
+        <link href="slideShow.css" rel="stylesheet" type="text/css" /> 
+
+        <style> 
+
+            /* in here, you would have the styling for the whole page -- 
+               everything but the slide show.*/
+
+            body {
+                background-color:#707790;
+            }
+
+            /* example showing how the HTML coder can add to or override styles 
+               from the slideShow style sheet. */
+            .slideShow {
+                padding: 1rem;
+                background-color: lightblue;
+            }
+
+        </style>
+
+    </head>
+    <body>
+        <h2 style="text-align:center">Test that both components work independently</h2>
+
+        <div id="content">
+        </div>
+
+        <script src="MakeSlideShow.js"></script>
+        <script>
+
+            "use strict";
+
+            var myPicList = [
+                "http://cis-linux2.temple.edu/~sallyk/pics_cat/pic1.png",
+                "http://cis-linux2.temple.edu/~sallyk/pics_cat/pic2.png",
+                "http://cis-linux2.temple.edu/~sallyk/pics_cat/pic3.png",
+                "http://cis-linux2.temple.edu/~sallyk/pics_cat/pic4.png",
+                "http://cis-linux2.temple.edu/~sallyk/pics_cat/pic5.png",
+                "http://cis-linux2.temple.edu/~sallyk/pics_cat/pic6.png"
+            ];
+
+            var ss1 = MakeSlideShow(myPicList, "slideShow");
+            document.getElementById("content").appendChild(ss1);
+
+            // Example showing why you need to get the ss reference, so the HTML page can invoke 
+            // any public methods that may be available from the returned slide show object.
+            ss1.setPicNum(3); // sets array index to 3, if 3 is in bounds for the array.
+
+            // create second slideshow object
+            var otherPicList = [
+                "http://cis-linux2.temple.edu/~sallyk/pics_cat/pic10.png",
+                "http://cis-linux2.temple.edu/~sallyk/pics_cat/pic11.png",
+
+                "http://cis-linux2.temple.edu/~sallyk/pics_cat/pic13.png",
+                "http://cis-linux2.temple.edu/~sallyk/pics_cat/pic14.png",
+                "http://cis-linux2.temple.edu/~sallyk/pics_cat/pic15.png"
+            ];
+            var ss2 = MakeSlideShow(otherPicList, "slideShow");
+            document.getElementById("content").appendChild(ss2);
+
+        </script>
+    </body>
+</html>

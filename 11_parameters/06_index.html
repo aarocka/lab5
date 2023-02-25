@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!-- Sample code: Car Object -->
+<html>
+    <head>
+        <title>Car Object Sample</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link href="car.css" rel="stylesheet" type="text/css" /> 
+
+        <style>
+
+        </style>
+    </head>
+    <body>
+
+        <h2>Check for Errors in Chrome (Press F12 to Open Up JS Console)</h2>
+        <div id="container">
+        </div>
+
+        <script>
+            "use strict";
+        </script>
+
+        <script src="06a_MakeCarParamList.js"></script>
+        <script src="06b_MakeCarParamObj.js"></script>
+        <script src="06c_MakeCarDestructureParamObj.js"></script>
+
+        <script>
+
+            // Make a car div using a parameter list
+            var myCarObj = MakeCarParamList("great", 5000);
+            document.getElementById("container").appendChild(myCarObj);
+
+            // Make a car div passing parameter object with propertiess that match expected properties
+            var yourCarObj = MakeCarParamObj( {condition: "fair", price: 2500} );
+            document.getElementById("container").appendChild(yourCarObj);
+
+            // Make a car div passing in an empty parameter object (accepting defaut values)
+            var defaultCarObj = MakeCarParamObj({});
+            document.getElementById("container").appendChild(defaultCarObj);
+
+            // Make a car div passing parameter object with properties that match expected properties
+            // The Make function is a little simpler, using object destructuring of input parameter object.
+            var destructSendingProps = MakeCarDestructureParamObj({condition: "destructuredFair", price: 7500});
+            document.getElementById("container").appendChild(destructSendingProps);
+
+            // Make a car div passing in an empty parameter object (accepting defaut values)
+            // The Make function is a little simpler, setting the default values right in the fn header. 
+            var defaultCarObj = MakeCarDestructureParamObj({});
+            document.getElementById("container").appendChild(defaultCarObj);
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
