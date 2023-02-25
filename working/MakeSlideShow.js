@@ -40,6 +40,7 @@ function MakeSlideShow (picList, style) {
 
     function setPic() {
         myImage.src = picList[picNum].fileName;
+        caption.innerHTML = picList[picNum].caption;
     }
 
     // Advance to next image in the picture list
