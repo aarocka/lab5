@@ -16,13 +16,15 @@ function MakeSlideShow (picList, style) {
     var buttonDiv = document.createElement("div");
     slideShow.appendChild(buttonDiv);
 
+    //add a br tag to make the caption appear on a separate lines
+    var br = document.createElement("br");
+    div.appendChild(br);
+
     //add caption under the image
     var caption =document.createElement("span");
     caption.classList.add("captionStyle");
     caption.id="caption";
     div.appendChild(caption);
-
-    // add some br tags to make the buttons appear on separate lines
 
     // add back button under the image (and empty paragraph)
     var backButton = document.createElement("button");
