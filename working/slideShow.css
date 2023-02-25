@@ -1,3 +1,9 @@
+#content {
+    display:flex; 
+    flex-direction: row;
+    justify-content: center;
+}
+
 .slideShow{
     text-align:center;
     font-weight:bold; 
