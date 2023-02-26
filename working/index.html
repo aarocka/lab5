@@ -110,19 +110,37 @@
                 console.log(funList);
 
                 var ss = MakeSlideShow(funList, "slideShow");
-                document.getElementById("content").appendChild(ss);
+                //document.getElementById("content").appendChild(ss);
+                firstDiv.appendChild(ss);
 
                 // Example showing why you need to get the ss reference, so the HTML page can invoke 
                 // any public methods that may be available from the returned slide show object.
                 ss.setPicNum(1);
             }
 
+            
+            ajax("waterFun.json", processCarList, secondDiv);
+            function processCarList(carList) {
 
+                // MakeSlideShow expects a property called "image", so provide that... 
+                for (var i = 0; i < carList.length; i++) {
+                    carList[i].pic = carList[i].pic;
+                    carList[i].caption = carList[i].item;
+                    console.log("image " + i + " " + carList[i].image);
+                }
 
+                var ss = MakeSlideShow(carList, "slideShow");
+                secondDiv.appendChild(ss);
 
+                // Example showing why you need to get the ss reference, so the HTML page can invoke 
+                // any public methods that may be available from the returned slide show object.
+                ss.setPicNum(2);
+            }
 
-
-
+            // add ele into the content area. 
+            // If using NavRouter, you'd just return ele at the end of the CGF 
+            // (content generating function).
+            document.getElementById("content").appendChild(ele);
 
 
 
