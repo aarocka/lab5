@@ -50,10 +50,15 @@
       <script src="js/reusable/MakeSlideShow.js"></script>
       <script src="js/reusable/ajax.js"></script>
       
+      <script src="js/content/blogContent.js"></script>
+      <script src="js/content/homeContent.js"></script>
+      <script src="js/content/slideShowContent.js"></script>
 
       <script>
         "use strict";
 
+        //put this into slideShowContent.js
+        /*
         //image list from ajax call            
 
         // Create a DOM element (div) like a CGF would do. 
@@ -136,6 +141,17 @@
         // If using NavRouter, you'd just return ele at the end of the CGF 
         // (content generating function).
         document.getElementById("content").appendChild(ele);
+        */
+
+        function inject(ele) {
+                // blank out old content
+                document.getElementById("content").innerHTML = "";
+
+                // append new content
+                document.getElementById("content").appendChild(ele);
+            }
+
+        inject(home()); // first rendering of page should inject home content...
       </script>
     </body>
 </html>
