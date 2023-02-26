@@ -5,9 +5,11 @@
 // and a string that specifies the style to be used
 
 function MakeSlideShow (objList, style) {
+    console.log("Check:"+objList+ " "+style);
+    
     if (!objList[0].pic || !objList[0].caption) {
-        throw ("MakeSlideShow expects an array of objects, each having an 'image' and a 'caption' property");
-    } 
+        throw ("MakeSlideShow expects an array of objects, each having an 'pic' and a 'caption' property");
+    }
 
     var slideShow = document.createElement("div");
     slideShow.classList.add(style);

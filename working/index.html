@@ -59,15 +59,81 @@
             ];
             */
 
-            //image list from ajax call
-            
+            //image list from ajax call            
 
-            var ss1 = MakeSlideShow(myPicList, "slideShow");
-            document.getElementById("content").appendChild(ss1);
+            // Create a DOM element (div) like a CGF would do. 
+            var ele = document.createElement("div");
+            
+            // style ele as a flex box and place two divs in that flex box
+            // (each 50% wide). Each of these divs will hold one slide show.
+
+            ele.innerHTML = `
+              <style>
+                .ssFlex {
+                  display:flex;
+                  flex-direction:row;
+                }
+                .ssFlex .ssHolder {
+                  width: 50%;
+                  box-sizing:border-box;
+                  text-align:center;
+                }
+              </style>
+              <div class="firstDiv ssHolder">
+                <h2>First SlideShow</h2>
+              </div>
+              <div class="secondDiv ssHolder">
+                <h2>Second SlideShow</h2>
+              </div>
+            `;
+
+            ele.classList.add("ssFlex"); // must style ele as ssFlex to pick up the 
+            // above styling.
+
+            // Get a reference to the two divs into which you want to place 
+            // slide show components. 
+            var firstDiv = ele.getElementsByClassName("firstDiv")[0];
+            var secondDiv = ele.getElementsByClassName("secondDiv")[0];
+
+            // Shows how an ajax error is handled -- you'll see an error 
+            // message on the page. waterFunnn.json is mispelled.
+            ajax("cars.json", processFunList, firstDiv);
+            function processFunList(funList) {
+                // MakeSlideShow expects a property called "image", so provide that... 
+                for (var i = 0; i < funList.length; i++) {
+                    funList[i].pic = funList[i].photo;
+                    funList[i].caption = funList[i].make;
+                    console.log("image " + i + " " + funList[i].image);
+                }
+
+                console.log("funList after setting image properties");
+                console.log(funList);
+
+                var ss = MakeSlideShow(funList, "slideShow");
+                document.getElementById("content").appendChild(ss);
+
+                // Example showing why you need to get the ss reference, so the HTML page can invoke 
+                // any public methods that may be available from the returned slide show object.
+                ss.setPicNum(1);
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+            //var ss1 = MakeSlideShow(myPicList, "slideShow");
+            //document.getElementById("content").appendChild(ss1);
 
             // Example showing why you need to get the ss reference, so the HTML page can invoke 
             // any public methods that may be available from the returned slide show object.
-            ss1.setPicNum(3); // sets array index to 3, if 3 is in bounds for the array.
+            //ss1.setPicNum(3); // sets array index to 3, if 3 is in bounds for the array.
 
             // create second slideshow object
             /*
@@ -79,8 +145,8 @@
                 {fileName:"http://cis-linux2.temple.edu/~sallyk/pics_cat/pic15.png", caption:"test blahaj10"}
             ];
             */
-            var ss2 = MakeSlideShow(otherPicList, "slideShow");
-            document.getElementById("content").appendChild(ss2);
+            //var ss2 = MakeSlideShow(otherPicList, "slideShow");
+            //document.getElementById("content").appendChild(ss2);
 
 
         </script>
