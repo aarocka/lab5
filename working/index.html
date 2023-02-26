@@ -36,102 +36,106 @@
 
     </head>
     <body>
-        <h2 style="text-align:center">Test that both components work independently</h2>
+      <a onclick="inject(home())">Home</a> |
+      <a onclick="inject(slideShowContent())">Slide Shows</a> |
+      <a onclick="inject(blog())">Blog</a> |
 
-        <div id="content">
-        </div>
+      <br/>
+      <br/>
 
-        <script src="js/reusable/MakeSlideShow.js"></script>
-        <script src="js/reusable/ajax.js"></script>
 
-        <script>
+      <div id="content">
+      </div>
 
-            "use strict";
+      <script src="js/reusable/MakeSlideShow.js"></script>
+      <script src="js/reusable/ajax.js"></script>
+      
 
-            //image list from ajax call            
+      <script>
+        "use strict";
 
-            // Create a DOM element (div) like a CGF would do. 
-            var ele = document.createElement("div");
-            
-            // style ele as a flex box and place two divs in that flex box
-            // (each 50% wide). Each of these divs will hold one slide show.
+        //image list from ajax call            
 
-            ele.innerHTML = `
-              <style>
-                .ssFlex {
-                  display:flex;
-                  flex-direction:row;
-                }
-                .ssFlex .ssHolder {
-                  width: 50%;
-                  box-sizing:border-box;
-                  text-align:center;
-                }
-              </style>
-              <div class="firstDiv ssHolder">
-                <h2>First SlideShow</h2>
-              </div>
-              <div class="secondDiv ssHolder">
-                <h2>Second SlideShow</h2>
-              </div>
-            `;
+        // Create a DOM element (div) like a CGF would do. 
+        var ele = document.createElement("div");
+        
+        // style ele as a flex box and place two divs in that flex box
+        // (each 50% wide). Each of these divs will hold one slide show.
 
-            ele.classList.add("ssFlex"); // must style ele as ssFlex to pick up the 
-            // above styling.
+        ele.innerHTML = `
+          <style>
+            .ssFlex {
+              display:flex;
+              flex-direction:row;
+            }
+            .ssFlex .ssHolder {
+              width: 50%;
+              box-sizing:border-box;
+              text-align:center;
+            }
+          </style>
+          <div class="firstDiv ssHolder">
+            <h2>First SlideShow</h2>
+          </div>
+          <div class="secondDiv ssHolder">
+            <h2>Second SlideShow</h2>
+          </div>
+        `;
 
-            // Get a reference to the two divs into which you want to place 
-            // slide show components. 
-            var firstDiv = ele.getElementsByClassName("firstDiv")[0];
-            var secondDiv = ele.getElementsByClassName("secondDiv")[0];
+        ele.classList.add("ssFlex"); // must style ele as ssFlex to pick up the 
+        // above styling.
 
-            // Shows how an ajax error is handled -- you'll see an error 
-            // message on the page. waterFunnn.json is mispelled.
-            ajax("json/cars.json", processCarList, firstDiv);
-            function processCarList(carList) {
-                // MakeSlideShow expects a property called "image", so provide that... 
-                for (var i = 0; i < carList.length; i++) {
-                    carList[i].pic = carList[i].photo;
-                    carList[i].caption = carList[i].make;
-                    console.log("image " + i + " " + carList[i].image);
-                }
+        // Get a reference to the two divs into which you want to place 
+        // slide show components. 
+        var firstDiv = ele.getElementsByClassName("firstDiv")[0];
+        var secondDiv = ele.getElementsByClassName("secondDiv")[0];
 
-                console.log("funList after setting image properties");
-                console.log(carList);
-
-                var ss = MakeSlideShow(carList, "slideShow");
-                //document.getElementById("content").appendChild(ss);
-                firstDiv.appendChild(ss);
-
-                // Example showing why you need to get the ss reference, so the HTML page can invoke 
-                // any public methods that may be available from the returned slide show object.
-                ss.setPicNum(1);
+        // Shows how an ajax error is handled -- you'll see an error 
+        // message on the page. waterFunnn.json is mispelled.
+        ajax("json/cars.json", processCarList, firstDiv);
+        function processCarList(carList) {
+            // MakeSlideShow expects a property called "image", so provide that... 
+            for (var i = 0; i < carList.length; i++) {
+                carList[i].pic = carList[i].photo;
+                carList[i].caption = carList[i].make;
+                console.log("image " + i + " " + carList[i].image);
             }
 
+            console.log("funList after setting image properties");
+            console.log(carList);
+
+            var ss = MakeSlideShow(carList, "slideShow");
+            //document.getElementById("content").appendChild(ss);
+            firstDiv.appendChild(ss);
+
+            // Example showing why you need to get the ss reference, so the HTML page can invoke 
+            // any public methods that may be available from the returned slide show object.
+            ss.setPicNum(1);
+        }
+
+        
+        ajax("json/waterFun.json", processWaterList, secondDiv);
+        function processWaterList(waterFunList) {
             
-            ajax("json/waterFun.json", processWaterList, secondDiv);
-            function processWaterList(waterFunList) {
-                
-                // MakeSlideShow expects a property called "image", so provide that... 
-                for (var i = 0; i < waterFunList.length; i++) {
-                    waterFunList[i].pic = waterFunList[i].pic;
-                    waterFunList[i].caption = waterFunList[i].item;
-                    console.log("image " + i + " " + waterFunList[i].image);
-                }
-
-                var ss = MakeSlideShow(waterFunList, "slideShow");
-                secondDiv.appendChild(ss);
-
-                // Example showing why you need to get the ss reference, so the HTML page can invoke 
-                // any public methods that may be available from the returned slide show object.
-                ss.setPicNum(2);
+            // MakeSlideShow expects a property called "image", so provide that... 
+            for (var i = 0; i < waterFunList.length; i++) {
+                waterFunList[i].pic = waterFunList[i].pic;
+                waterFunList[i].caption = waterFunList[i].item;
+                console.log("image " + i + " " + waterFunList[i].image);
             }
 
-            // add ele into the content area. 
-            // If using NavRouter, you'd just return ele at the end of the CGF 
-            // (content generating function).
-            document.getElementById("content").appendChild(ele);
+            var ss = MakeSlideShow(waterFunList, "slideShow");
+            secondDiv.appendChild(ss);
 
+            // Example showing why you need to get the ss reference, so the HTML page can invoke 
+            // any public methods that may be available from the returned slide show object.
+            ss.setPicNum(2);
+        }
 
-        </script>
+        // add ele into the content area. 
+        // If using NavRouter, you'd just return ele at the end of the CGF 
+        // (content generating function).
+        document.getElementById("content").appendChild(ele);
+      </script>
     </body>
 </html>
