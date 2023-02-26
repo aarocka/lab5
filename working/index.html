@@ -41,23 +41,12 @@
         <div id="content">
         </div>
 
-        <script src="MakeSlideShow.js"></script>
-        <script src="ajax.js"></script>
+        <script src="js/reusable/MakeSlideShow.js"></script>
+        <script src="js/reusable/ajax.js"></script>
 
         <script>
 
             "use strict";
-            //create first slideshow object
-            /*
-            var myPicList = [
-                {fileName:"http://cis-linux2.temple.edu/~sallyk/pics_cat/pic1.png", caption:"test blahaj0"},
-                {fileName:"http://cis-linux2.temple.edu/~sallyk/pics_cat/pic2.png", caption:"test blahaj1"},
-                {fileName:"http://cis-linux2.temple.edu/~sallyk/pics_cat/pic3.png", caption:"test blahaj2"},
-                {fileName:"http://cis-linux2.temple.edu/~sallyk/pics_cat/pic4.png", caption:"test blahaj3"},
-                {fileName:"http://cis-linux2.temple.edu/~sallyk/pics_cat/pic5.png", caption:"test blahaj4"},
-                {fileName:"http://cis-linux2.temple.edu/~sallyk/pics_cat/pic6.png", caption:"test blahaj5"}
-            ];
-            */
 
             //image list from ajax call            
 
@@ -97,7 +86,7 @@
 
             // Shows how an ajax error is handled -- you'll see an error 
             // message on the page. waterFunnn.json is mispelled.
-            ajax("cars.json", processCarList, firstDiv);
+            ajax("json/cars.json", processCarList, firstDiv);
             function processCarList(carList) {
                 // MakeSlideShow expects a property called "image", so provide that... 
                 for (var i = 0; i < carList.length; i++) {
@@ -119,7 +108,7 @@
             }
 
             
-            ajax("waterFun.json", processWaterList, secondDiv);
+            ajax("json/waterFun.json", processWaterList, secondDiv);
             function processWaterList(waterFunList) {
                 
                 // MakeSlideShow expects a property called "image", so provide that... 
@@ -141,30 +130,6 @@
             // If using NavRouter, you'd just return ele at the end of the CGF 
             // (content generating function).
             document.getElementById("content").appendChild(ele);
-
-
-
-
-
-            //var ss1 = MakeSlideShow(myPicList, "slideShow");
-            //document.getElementById("content").appendChild(ss1);
-
-            // Example showing why you need to get the ss reference, so the HTML page can invoke 
-            // any public methods that may be available from the returned slide show object.
-            //ss1.setPicNum(3); // sets array index to 3, if 3 is in bounds for the array.
-
-            // create second slideshow object
-            /*
-            var otherPicList =[ 
-                {fileName:"http://cis-linux2.temple.edu/~sallyk/pics_cat/pic10.png", caption:"test blahaj6"},
-                {fileName:"http://cis-linux2.temple.edu/~sallyk/pics_cat/pic11.png", caption:"test blahaj7"},
-                {fileName:"http://cis-linux2.temple.edu/~sallyk/pics_cat/pic13.png", caption:"test blahaj8"},
-                {fileName:"http://cis-linux2.temple.edu/~sallyk/pics_cat/pic14.png", caption:"test blahaj9"},
-                {fileName:"http://cis-linux2.temple.edu/~sallyk/pics_cat/pic15.png", caption:"test blahaj10"}
-            ];
-            */
-            //var ss2 = MakeSlideShow(otherPicList, "slideShow");
-            //document.getElementById("content").appendChild(ss2);
 
 
         </script>
