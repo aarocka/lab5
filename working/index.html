@@ -97,19 +97,19 @@
 
             // Shows how an ajax error is handled -- you'll see an error 
             // message on the page. waterFunnn.json is mispelled.
-            ajax("cars.json", processFunList, firstDiv);
-            function processFunList(funList) {
+            ajax("cars.json", processCarList, firstDiv);
+            function processCarList(carList) {
                 // MakeSlideShow expects a property called "image", so provide that... 
-                for (var i = 0; i < funList.length; i++) {
-                    funList[i].pic = funList[i].photo;
-                    funList[i].caption = funList[i].make;
-                    console.log("image " + i + " " + funList[i].image);
+                for (var i = 0; i < carList.length; i++) {
+                    carList[i].pic = carList[i].photo;
+                    carList[i].caption = carList[i].make;
+                    console.log("image " + i + " " + carList[i].image);
                 }
 
                 console.log("funList after setting image properties");
-                console.log(funList);
+                console.log(carList);
 
-                var ss = MakeSlideShow(funList, "slideShow");
+                var ss = MakeSlideShow(carList, "slideShow");
                 //document.getElementById("content").appendChild(ss);
                 firstDiv.appendChild(ss);
 
@@ -119,17 +119,17 @@
             }
 
             
-            ajax("waterFun.json", processCarList, secondDiv);
-            function processCarList(carList) {
+            ajax("waterFun.json", processWaterList, secondDiv);
+            function processWaterList(waterFunList) {
                 
                 // MakeSlideShow expects a property called "image", so provide that... 
-                for (var i = 0; i < carList.length; i++) {
-                    carList[i].pic = carList[i].pic;
-                    carList[i].caption = carList[i].item;
-                    console.log("image " + i + " " + carList[i].image);
+                for (var i = 0; i < waterFunList.length; i++) {
+                    waterFunList[i].pic = waterFunList[i].pic;
+                    waterFunList[i].caption = waterFunList[i].item;
+                    console.log("image " + i + " " + waterFunList[i].image);
                 }
 
-                var ss = MakeSlideShow(carList, "slideShow");
+                var ss = MakeSlideShow(waterFunList, "slideShow");
                 secondDiv.appendChild(ss);
 
                 // Example showing why you need to get the ss reference, so the HTML page can invoke 
